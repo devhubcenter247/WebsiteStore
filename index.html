@@ -2,456 +2,166 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BlueLeaf Apps — Mobile App Studio</title>
-<meta name="description" content="BlueLeaf Apps is an independent mobile app studio. We design simple, fast, privacy-friendly Android tools — including QR Scanner: Scan, Create, Edit." />
-<meta name="author" content="BlueLeaf Apps" />
-<meta name="keywords" content="BlueLeaf Apps, QR Scanner, Android Apps, Mobile Apps, Barcode Scanner, QR Code Generator" />
-
-<!-- Open Graph -->
+<title>LORETTO EVENTS incorporated — Mobile Apps</title>
+<meta name="description" content="LORETTO EVENTS incorporated publishes mobile apps for Android on Google Play." />
+<meta name="author" content="LORETTO EVENTS incorporated" />
+<meta name="theme-color" content="#0b1230" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="BlueLeaf Apps — Mobile App Studio" />
-<meta property="og:description" content="Simple, fast, privacy-friendly Android tools by BlueLeaf Apps." />
-<meta property="og:url" content="https://blueleafapps.github.io/" />
-
+<meta property="og:title" content="LORETTO EVENTS incorporated — Mobile Apps" />
+<meta property="og:description" content="Mobile apps published by LORETTO EVENTS incorporated." />
+<link rel="icon" type="image/png" href="icon/icon_app_256.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f8fb;
-    --bg-2: #e6f0f7;
-    --ink: #0b2434;
-    --ink-soft: #4a6377;
-    --leaf: #1f7a8c;
-    --leaf-deep: #0f4c5c;
-    --accent: #5fb6c9;
-    --card: #ffffff;
-    --line: #d8e3ec;
-    --shadow: 0 10px 30px -12px rgba(15, 76, 92, 0.18);
+    --night: #0b1230;
+    --night-2: #151e4a;
+    --bg: #f6f7fc;
+    --surface: #ffffff;
+    --ink: #121936;
+    --ink-soft: #596280;
+    --line: #e3e7f2;
+    --brand: #2563eb;
+    --brand-deep: #1846b8;
+    --sky: #7cc4ff;
+    --pdf: #ef4444;
+    --word: #2563eb;
+    --excel: #16a34a;
+    --ppt: #f59e0b;
+    --shadow-lg: 0 40px 80px -30px rgba(3, 8, 40, 0.6);
+    --shadow-sm: 0 12px 30px -18px rgba(18, 25, 54, 0.3);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   body {
-    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
+  img { display: block; max-width: 100%; height: auto; }
+  a:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  /* Decorative background blobs */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(95, 182, 201, 0.18), transparent 60%);
-    border-radius: 50%;
-    z-index: -1;
-    pointer-events: none;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: -300px;
-    left: -200px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(31, 122, 140, 0.12), transparent 60%);
-    border-radius: 50%;
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- HEADER ---------- */
+  /* Header */
   header {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line);
-    background: rgba(244, 248, 251, 0.85);
-    backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    position: sticky; top: 0; z-index: 20;
+    background: var(--night);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Fraunces', serif;
-    font-weight: 800;
-    font-size: 1.35rem;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-  .brand-mark {
-    width: 38px; height: 38px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--leaf), var(--accent));
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--shadow);
-  }
-  .brand-mark svg { width: 22px; height: 22px; color: #fff; }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 32px;
-  }
-  nav a {
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--leaf-deep); }
-  @media (max-width: 640px) {
-    nav ul { display: none; }
-  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; color: #fff; text-decoration: none; font-weight: 800; font-size: 0.98rem; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; flex: none; }
+  .nav ul { list-style: none; display: flex; gap: 30px; }
+  .nav ul a { color: #c4cbe6; text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color .2s; }
+  .nav ul a:hover { color: #fff; }
 
-  /* ---------- HERO ---------- */
+  /* Hero */
   .hero {
-    padding: 90px 0 60px;
-    text-align: center;
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(620px 420px at 82% 18%, rgba(59, 111, 246, 0.5), transparent 70%),
+      radial-gradient(520px 420px at 62% 100%, rgba(139, 92, 246, 0.34), transparent 70%),
+      radial-gradient(460px 340px at 4% 0%, rgba(20, 184, 166, 0.16), transparent 70%),
+      var(--night);
   }
-  .eyebrow {
-    display: inline-block;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--leaf);
-    font-weight: 600;
-    margin-bottom: 24px;
-    padding: 6px 14px;
-    border: 1px solid var(--accent);
-    border-radius: 100px;
-    background: rgba(95, 182, 201, 0.08);
-  }
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 22px;
-    color: var(--ink);
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--leaf);
-    font-weight: 400;
-  }
-  .lead {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 640px;
-    margin: 0 auto 36px;
-  }
-  .cta-row {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 26px;
-    border-radius: 100px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.98rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-primary {
-    background: var(--ink);
-    color: #fff;
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px -8px rgba(11, 36, 52, 0.4);
-  }
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--line);
-  }
-  .btn-ghost:hover {
-    border-color: var(--ink);
-  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; min-height: 640px; padding: 56px 24px; }
+  .pill { display: inline-block; padding: 6px 14px; margin-bottom: 22px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: #cfe0ff; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); }
+  .hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.1rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; margin-bottom: 20px; }
+  .hero h1 span { background: linear-gradient(90deg, #7cc4ff, #a78bfa 60%, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-lead { font-size: 1.14rem; color: #bcc5e4; max-width: 500px; margin-bottom: 32px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 0.98rem; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: #fff; color: var(--night); box-shadow: 0 16px 34px -14px rgba(124, 196, 255, 0.7); }
+  .btn-ghost { color: #fff; border: 1px solid rgba(255, 255, 255, 0.24); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+  .btn svg { width: 17px; height: 17px; }
 
-  /* ---------- APPS SECTION ---------- */
-  section {
-    padding: 80px 0;
-  }
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-  }
-  .section-subtitle {
-    color: var(--ink-soft);
-    margin-bottom: 48px;
-    font-size: 1.05rem;
-  }
+  /* Phone mockup (decorative) */
+  .stage { position: relative; display: flex; justify-content: center; }
+  .phone { width: 280px; padding: 10px; border-radius: 42px; background: #1b2348; border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: var(--shadow-lg); transform: rotate(2.5deg); }
+  .screen { padding: 20px 16px 22px; border-radius: 33px; background: #f7f8fd; color: var(--ink); }
+  .screen-top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .screen-top img { width: 34px; height: 34px; border-radius: 9px; }
+  .screen-top strong { font-size: 0.98rem; }
+  .search { height: 34px; margin-bottom: 16px; border-radius: 10px; background: #e9ecf6; }
+  .label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
+  .file { display: flex; align-items: center; gap: 10px; padding: 9px; margin-bottom: 7px; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px -8px rgba(18, 25, 54, 0.35); }
+  .file b { display: block; font-size: 0.78rem; font-weight: 700; line-height: 1.3; }
+  .file i { display: block; font-style: normal; font-size: 0.66rem; color: var(--ink-soft); }
+  .badge { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 9px; color: #fff; font-size: 0.6rem; font-weight: 800; background: var(--c); }
+  .float { position: absolute; display: flex; align-items: center; gap: 9px; padding: 9px 13px 9px 9px; border-radius: 14px; background: rgba(255, 255, 255, 0.96); color: var(--ink); font-size: 0.78rem; font-weight: 800; box-shadow: var(--shadow-lg); }
+  .float.two { bottom: 16%; right: 0; }
+  .float img { width: 28px; height: 28px; border-radius: 8px; }
 
-  .app-card {
-    background: var(--card);
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 32px;
-    align-items: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -16px rgba(15, 76, 92, 0.25);
-  }
-  .app-icon {
-    width: 96px; height: 96px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, #c8e8f0, #e0f4f8);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: inset 0 0 0 1px rgba(31, 122, 140, 0.1);
-    flex-shrink: 0;
-  }
-  .app-icon svg { width: 56px; height: 56px; color: var(--leaf-deep); }
+  /* Sections */
+  section { padding: 92px 0; }
+  .eyebrow { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
+  h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.028em; }
+  .head { max-width: 620px; margin-bottom: 44px; }
+  .head p:not(.eyebrow) { color: var(--ink-soft); margin-top: 12px; font-size: 1.05rem; }
 
-  .app-info h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.55rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .app-info p {
-    color: var(--ink-soft);
-    font-size: 0.98rem;
-    margin-bottom: 14px;
-  }
-  .app-tags {
-    display: flex; gap: 8px; flex-wrap: wrap;
-  }
-  .tag {
-    font-size: 0.78rem;
-    padding: 4px 11px;
-    background: var(--bg-2);
-    color: var(--leaf-deep);
-    border-radius: 100px;
-    font-weight: 500;
-  }
-  .app-features {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px 20px;
-    margin: -4px 0 16px;
-  }
-  .app-features li {
-    position: relative;
-    padding-left: 22px;
-    color: var(--ink-soft);
-    font-size: 0.92rem;
-  }
-  .app-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--leaf);
-    font-weight: 600;
-  }
-  .app-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    flex-shrink: 0;
-    text-align: right;
-  }
-  .app-meta .platform {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    color: var(--leaf-deep);
-    font-size: 1.05rem;
-  }
-  .app-meta .status {
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-  }
+  /* Apps */
+  .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .app { display: flex; flex-direction: column; gap: 16px; padding: 26px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s; }
+  article.app:hover { transform: translateY(-3px); box-shadow: 0 22px 44px -22px rgba(18, 25, 54, 0.4); }
+  .app-top { display: flex; align-items: center; gap: 16px; }
+  .app-top img { flex: none; width: 72px; height: 72px; border-radius: 18px; }
+  .app h3 { font-size: 1.14rem; font-weight: 800; letter-spacing: -0.012em; line-height: 1.3; }
+  .platform { font-size: 0.84rem; font-weight: 600; color: var(--ink-soft); }
+  .app p { color: var(--ink-soft); font-size: 0.96rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+  .tags li { padding: 3px 10px; border-radius: 7px; font-size: 0.76rem; font-weight: 700; color: var(--brand-deep); background: #e9f0ff; }
+  .btn-brand { margin-top: auto; justify-content: center; background: var(--brand); color: #fff; }
+  .btn-brand:hover { background: var(--brand-deep); }
+  .app-soon { justify-content: center; align-items: center; text-align: center; gap: 6px; min-height: 240px; background: transparent; border: 2px dashed #cfd6e6; box-shadow: none; }
 
-  @media (max-width: 720px) {
-    .app-card {
-      grid-template-columns: 1fr;
-      text-align: center;
-      padding: 28px;
-    }
-    .app-icon { margin: 0 auto; }
-    .app-tags { justify-content: center; }
-    .app-features { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; text-align: left; }
-    .app-meta { align-items: center; text-align: center; }
-  }
+  /* About + contact */
+  .company { background: var(--surface); border-top: 1px solid var(--line); }
+  .company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .company-grid .lead { color: var(--ink-soft); margin-top: 12px; font-size: 1.05rem; }
+  .contact { padding: 8px 28px; border-radius: 22px; background: var(--bg); border: 1px solid var(--line); }
+  .row { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .row h3 { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+  .row address { font-style: normal; }
+  .row a { color: var(--brand); font-weight: 700; overflow-wrap: anywhere; }
 
-  /* ---------- ABOUT ---------- */
-  .about {
-    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.6));
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .about-grid h2 { margin-bottom: 20px; }
-  .about-grid p {
-    color: var(--ink-soft);
-    font-size: 1.02rem;
-    margin-bottom: 16px;
-  }
-  .values {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-  .value {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-  .value-icon {
-    width: 42px; height: 42px;
-    border-radius: 12px;
-    background: var(--bg-2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .value-icon svg { width: 20px; height: 20px; color: var(--leaf-deep); }
-  .value h4 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .value p { font-size: 0.94rem; margin: 0; }
+  /* Footer */
+  footer { padding: 30px 0; background: var(--night); color: #aab3d4; font-size: 0.88rem; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+  footer a { color: #fff; text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 720px) {
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; min-height: 0; padding: 60px 24px 72px; gap: 52px; }
+    .company-grid { grid-template-columns: 1fr; gap: 36px; }
+    section { padding: 68px 0; }
   }
-
-  /* ---------- CONTACT ---------- */
-  .contact-card {
-    background: var(--ink);
-    color: #e8f0f5;
-    border-radius: 28px;
-    padding: 56px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  @media (max-width: 560px) {
+    .apps-grid { grid-template-columns: 1fr; }
+    .nav ul { display: none; }
+    .brand { font-size: 0.9rem; }
+    .actions .btn { flex: 1 1 100%; justify-content: center; }
+    .phone { width: 250px; }
+    .float.two { right: -6px; }
   }
-  .contact-card::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(95, 182, 201, 0.25), transparent 60%);
-    border-radius: 50%;
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
   }
-  .contact-card h2 {
-    color: #fff;
-    margin-bottom: 14px;
-    position: relative;
-  }
-  .contact-card p {
-    color: #b0c4d4;
-    margin-bottom: 28px;
-    position: relative;
-  }
-  .contact-links {
-    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-    position: relative;
-  }
-  .contact-links a {
-    color: #fff;
-    text-decoration: none;
-    padding: 11px 22px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .contact-links a:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.5);
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    padding: 40px 0 60px;
-    text-align: center;
-    color: var(--ink-soft);
-    font-size: 0.88rem;
-  }
-  footer .small {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    opacity: 0.7;
-  }
-
-  /* fade-in on load */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero > * { animation: fadeUp 0.8s ease-out backwards; }
-  .hero .eyebrow { animation-delay: 0.05s; }
-  .hero h1       { animation-delay: 0.15s; }
-  .hero .lead    { animation-delay: 0.25s; }
-  .hero .cta-row { animation-delay: 0.35s; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="container nav">
-    <a href="#" class="brand">
-      <span class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-          <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
-        </svg>
-      </span>
-      BlueLeaf Apps
-    </a>
-    <nav>
+    <a href="#top" class="brand"><img src="icon/icon_app_256.png" alt="" width="32" height="32" />LORETTO EVENTS incorporated</a>
+    <nav aria-label="Main">
       <ul>
         <li><a href="#apps">Apps</a></li>
         <li><a href="#about">About</a></li>
@@ -461,187 +171,105 @@
   </div>
 </header>
 
-<main>
+<main id="top">
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">Android app publisher</span>
+        <h1>Apps that make <span>everyday tasks simple.</span></h1>
+        <p class="hero-lead">LORETTO EVENTS incorporated publishes a growing collection of mobile apps for Android.</p>
+        <div class="actions">
+          <a href="#apps" class="btn btn-primary">Explore our apps</a>
+          <a href="#about" class="btn btn-ghost">About us</a>
+        </div>
+      </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <span class="eyebrow">Independent App Studio</span>
-      <h1>Small tools,<br><em>made carefully.</em></h1>
-      <p class="lead">
-        BlueLeaf Apps designs simple, fast, privacy-friendly Android utilities.
-        No accounts, no tracking, no clutter — just tools that do one thing well.
-      </p>
-      <div class="cta-row">
-        <a href="#apps" class="btn btn-primary">
-          Browse our apps
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <div class="stage" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="screen-top"><img src="icon/icon_app_256.png" alt="" width="34" height="34" /><strong>Documents</strong></div>
+            <div class="search"></div>
+            <div class="label">Recent files</div>
+            <div class="file"><span class="badge" style="--c:var(--pdf)">PDF</span><span><b>Annual report</b><i>PDF document</i></span></div>
+            <div class="file"><span class="badge" style="--c:var(--word)">DOC</span><span><b>Meeting notes</b><i>Word document</i></span></div>
+            <div class="file"><span class="badge" style="--c:var(--excel)">XLS</span><span><b>Monthly budget</b><i>Excel sheet</i></span></div>
+            <div class="file"><span class="badge" style="--c:var(--ppt)">PPT</span><span><b>Team slides</b><i>Presentation</i></span></div>
+          </div>
+        </div>
+        <div class="float two"><img src="icon/icon_app_256.png" alt="" width="28" height="28" /><span>Featured app</span></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- APPS -->
   <section id="apps">
     <div class="container">
-      <h2 class="section-title">Our Apps</h2>
-      <p class="section-subtitle">Apps and tools published by BlueLeaf Apps.</p>
+      <div class="head">
+        <p class="eyebrow">Our apps</p>
+        <h2>Built for everyday use</h2>
+        <p>All apps published by LORETTO EVENTS incorporated.</p>
+      </div>
 
-      <!-- App: QR Scanner -->
-      <article class="app-card">
-        <div class="app-icon">
-          <img src="icon/qr_scanner.webp" alt="QR Scanner: Scan, Create, Edit app icon" style="width: 96px; height: 96px; border-radius: 22px;">
-        </div>
-        <div class="app-info">
-          <h3>QR Scanner: Scan, Create, Edit</h3>
-          <p>Scan QR codes and barcodes in a snap, then create your own QR codes with logos, colors and frames. Core scanning and creating work offline.</p>
-          <ul class="app-features">
-            <li>Batch scan many codes at once</li>
-            <li>QR, EAN, UPC, Code 128, PDF417…</li>
-            <li>One tap: open links, join Wi-Fi</li>
-            <li>Custom shapes, colors &amp; logo</li>
+      <div class="apps-grid">
+        <!-- TO ADD AN APP: copy this <article>, then change the icon, name, description, tags, and package id.
+             Remove the "More apps" tile when you no longer want it. -->
+        <article class="app">
+          <div class="app-top">
+            <img src="icon/icon_app_256.png" alt="Document Reader &amp; Editor app icon" width="72" height="72" />
+            <div>
+              <h3>Document Reader &amp; Editor</h3>
+              <span class="platform">Android</span>
+            </div>
+          </div>
+          <p>Open and work with common document formats on your Android device.</p>
+          <ul class="tags">
+            <li>PDF</li>
+            <li>Word</li>
+            <li>Excel</li>
+            <li>PowerPoint</li>
           </ul>
-          <div class="app-tags">
-            <span class="tag">Offline</span>
-            <span class="tag">Batch scan</span>
-            <span class="tag">Custom QR</span>
-            <span class="tag">Free</span>
-          </div>
-        </div>
-        <div class="app-meta">
-          <span class="platform">Android</span>
-          <a href="https://play.google.com/store/apps/details?id=com.qr.scanner.barcode.creator.edit" target="_blank" rel="noopener noreferrer" class="status" style="color: var(--leaf); text-decoration: none; font-weight: 500;">▶ Available on Google Play</a>
-        </div>
-      </article>
+          <a href="https://play.google.com/store/apps/details?id=com.alldocs.document.reader.editor" target="_blank" rel="noopener noreferrer" class="btn btn-brand">Get it on Google Play</a>
+        </article>
 
-      <!-- App: StreamWave TV -->
-      <article class="app-card" style="margin-top: 24px;">
-        <div class="app-icon">
-          <img src="icon/streamwave_tv.webp" alt="StreamWave TV App Icon" style="width: 96px; height: 96px; border-radius: 12px;">
+        <div class="app app-soon">
+          <h3>More apps</h3>
+          <p>New apps will be listed here as they are released.</p>
         </div>
-        <div class="app-info">
-          <h3>StreamWave TV - IPTV Player</h3>
-          <p>A fast IPTV and M3U8 stream player. Add your own M3U playlists and stream links, and watch live TV on your Android device with a clean, simple player.</p>
-          <div class="app-tags">
-            <span class="tag">IPTV</span>
-            <span class="tag">M3U / M3U8</span>
-            <span class="tag">Android</span>
-            <span class="tag">Free</span>
-          </div>
-        </div>
-        <div class="app-meta">
-          <span class="platform">Android</span>
-          <a href="https://play.google.com/store/apps/details?id=com.stream.itpv.live.m3u.smartplayer" target="_blank" rel="noopener noreferrer" class="status" style="color: var(--leaf); text-decoration: none; font-weight: 500;">▶ Available on Google Play</a>
-        </div>
-      </article>
-
-      <!-- App: UAC & AdMob Manager (desktop tool) -->
-      <article class="app-card" style="margin-top: 24px;">
-        <div class="app-icon" style="background: none; box-shadow: none;">
-          <img src="icon/uac_manager.png" alt="UAC &amp; AdMob Manager app icon" style="width: 104px; height: 104px;">
-        </div>
-        <div class="app-info">
-          <h3>UAC &amp; AdMob Manager</h3>
-          <p>A desktop tool for launching Google Ads App campaigns across many countries, managing ad videos, and tracking ROAS by country with AdMob revenue. Data stays on your computer.</p>
-          <div class="app-tags">
-            <span class="tag">Desktop</span>
-            <span class="tag">Google Ads</span>
-            <span class="tag">AdMob</span>
-            <span class="tag">Local data</span>
-          </div>
-        </div>
-        <div class="app-meta">
-          <span class="platform">macOS · Windows</span>
-          <a href="uac-manager/" class="status" style="color: var(--leaf); text-decoration: none; font-weight: 500;">Learn more →</a>
-          <a href="uac-manager/privacy.html" class="status" style="color: var(--ink-soft); text-decoration: none;">Privacy Policy</a>
-        </div>
-      </article>
-
-      <!--
-        ▼▼▼ TO ADD A NEW APP: copy the <article class="app-card">...</article> 
-        block above, paste it below, and update the title, description, 
-        and (optionally) the SVG icon. 
-      ▼▼▼ -->
-
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="container about-grid">
+  <section id="about" class="company">
+    <div class="container company-grid">
       <div>
-        <h2 class="section-title">About BlueLeaf</h2>
-        <p>
-          BlueLeaf Apps is a small, independent mobile app studio. We build
-          everyday Android tools that respect your time and your data.
-        </p>
-        <p>
-          Every app is engineered to feel quick, look clean, and work fully
-          offline whenever possible. We believe utilities should disappear
-          into your workflow — not demand attention.
-        </p>
+        <p class="eyebrow">About us</p>
+        <h2>The company behind the apps</h2>
+        <p class="lead">LORETTO EVENTS incorporated is based in Raywick, Kentucky, and is the publisher of the apps listed on this site.</p>
       </div>
-      <div class="values">
-        <div class="value">
-          <span class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-          </span>
-          <div>
-            <h4>Privacy first</h4>
-            <p>Apps work offline by default. We don't collect personal data.</p>
-          </div>
+      <div class="contact" id="contact">
+        <div class="row">
+          <h3>Email</h3>
+          <a href="mailto:harrisonrubio3gsvjq6@gmail.com">harrisonrubio3gsvjq6@gmail.com</a>
         </div>
-        <div class="value">
-          <span class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>
-          </span>
-          <div>
-            <h4>Fast and lightweight</h4>
-            <p>Small install size, instant launch, no bloat.</p>
-          </div>
+        <div class="row">
+          <h3>Address</h3>
+          <address>LORETTO EVENTS incorporated<br>45 Cambron Lane, Raywick, KY 40060</address>
         </div>
-        <div class="value">
-          <span class="value-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <div>
-            <h4>Made with care</h4>
-            <p>Independently built and maintained — every detail reviewed.</p>
-          </div>
+        <div class="row">
+          <h3>Privacy</h3>
+          <a href="privacy.html">Read our Privacy Policy</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-card">
-        <h2 class="section-title">Get in touch</h2>
-        <p>Questions, feedback, or bug reports — we'd love to hear from you.</p>
-        <div class="contact-links">
-          <a href="mailto:dong2k2.dev@gmail.com">
-            ✉ dong2k2.dev@gmail.com
-          </a>
-          <a href="privacy.html">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
-  <div class="container">
-    <div>© <span id="year"></span> BlueLeaf Apps. All rights reserved.</div>
-    <div class="small">Built with care · Hanoi, Vietnam</div>
+  <div class="container foot">
+    <span>© <span id="year">2026</span> LORETTO EVENTS incorporated</span>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
